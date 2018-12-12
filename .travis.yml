@@ -10,6 +10,6 @@ before_script:
 
 script: flask run
 deploy:
-    #      provider: pages
-    #  github_token: $GITHUB_TOKEN
+      provider: pages
+      github_token: $GITHUB_TOKEN
       local_dir: dist
