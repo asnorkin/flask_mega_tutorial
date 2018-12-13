@@ -17,3 +17,5 @@ class Config:
     ADMINS = ['snorkin@phystech.com']
 
     POSTS_PER_PAGE = 3
+
+    LANGUAGES = ['en', 'es']
