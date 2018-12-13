@@ -16,6 +16,8 @@ class Config:
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['snorkin@phystech.com']
 
+    YANDEX_TRANSLATE_TOKEN = os.environ.get('YANDEX_TRANSLATE_TOKEN')
+
     POSTS_PER_PAGE = 3
 
     LANGUAGES = ['en', 'es']
