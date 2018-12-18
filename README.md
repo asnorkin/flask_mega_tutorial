@@ -1,3 +1,3 @@
-# flask_mega_tutorial
-This repository contains code for flask mega tutorial course by Miguel Grinberg
-https://courses.miguelgrinberg.com/p/flask-mega-tutorial
+# Welcome to Microblog!
+
+This is an example application featured in my [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). See the tutorial for instructions on how to work with it.

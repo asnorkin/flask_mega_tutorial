@@ -1,19 +1,19 @@
 import json
-import requests as rq
+import requests
+from flask import current_app
 from flask_babel import _
-from app import app
 
 
 def translate(text, source_language, dest_language):
-    if 'YANDEX_TRANSLATE_TOKEN' not in app.config or not app.config['YANDEX_TRANSLATE_TOKEN']:
+    if 'MS_TRANSLATOR_KEY' not in current_app.config or \
+            not current_app.config['MS_TRANSLATOR_KEY']:
         return _('Error: the translation service is not configured.')
-
-    url = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
-    API_TOKEN = app.config['YANDEX_TRANSLATE_TOKEN']
-    translation_pair = '{}-{}'.format(source_language, dest_language)
-    resp = rq.post(url, data={'key': API_TOKEN, 'text': text, 'lang': translation_pair})
-
-    if resp.status_code != 200:
+    auth = {
+        'Ocp-Apim-Subscription-Key': current_app.config['MS_TRANSLATOR_KEY']}
+    r = requests.get('https://api.microsofttranslator.com/v2/Ajax.svc'
+                     '/Translate?text={}&from={}&to={}'.format(
+                         text, source_language, dest_language),
+                     headers=auth)
+    if r.status_code != 200:
         return _('Error: the translation service failed.')
-
-    return json.loads(resp.content)['text'][0]
+    return json.loads(r.content.decode('utf-8-sig'))
